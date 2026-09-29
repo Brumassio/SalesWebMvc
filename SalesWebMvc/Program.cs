@@ -3,7 +3,6 @@ var builder = WebApplication.CreateBuilder(args);
 var connectionString = builder.Configuration.GetConnectionString("SalesWebMvcContext") ?? throw new InvalidOperationException("Connection string 'SalesWebMvcContext' not found.");
 
 builder.Services.AddDbContext<SalesWebMvcContext>(options => options.UseSqlServer(connectionString));
-
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
