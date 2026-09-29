@@ -13,7 +13,7 @@
 
         public Seller(int id, string name, string email, DateTime birthDate, double baseSalary, Department department)
         {
-            Id = id;
+            //Id = id;
             Name = name;
             Email = email;
             BirthDate = birthDate;

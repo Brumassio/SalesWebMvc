@@ -1,4 +1,5 @@
 using Microsoft.EntityFrameworkCore;
+using SalesWebMvc.Data;
 public partial class Program
 {
     private static void Main(string[] args)
@@ -7,10 +8,17 @@ public partial class Program
         builder.Services.AddRazorPages().AddRazorRuntimeCompilation();
         var connectionString = builder.Configuration.GetConnectionString("SalesWebMvcContext") ?? throw new InvalidOperationException("Connection string 'SalesWebMvcContext' not found.");
         builder.Services.AddDbContext<SalesWebMvcContext>(options => options.UseSqlServer(connectionString));
+        builder.Services.AddScoped<SeedingService>();
         // Add services to the container.
         builder.Services.AddControllersWithViews();
 
         var app = builder.Build();
+
+        using (var scope = app.Services.CreateScope())
+        {
+            var seedingService = scope.ServiceProvider.GetRequiredService<SeedingService>();
+            seedingService.Seed();
+        }
 
         // Configure the HTTP request pipeline.
         if (!app.Environment.IsDevelopment())

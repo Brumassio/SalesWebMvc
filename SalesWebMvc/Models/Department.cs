@@ -9,7 +9,7 @@
         
         public Department(int id, string name)
         {
-            Id = id;
+            //Id = id;
             Name = name;
         }
 
