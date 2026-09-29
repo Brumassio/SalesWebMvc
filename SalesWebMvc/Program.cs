@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using SalesWebMvc.Data;
+using SalesWebMvc.Services;
 public partial class Program
 {
     private static void Main(string[] args)
@@ -9,6 +10,8 @@ public partial class Program
         var connectionString = builder.Configuration.GetConnectionString("SalesWebMvcContext") ?? throw new InvalidOperationException("Connection string 'SalesWebMvcContext' not found.");
         builder.Services.AddDbContext<SalesWebMvcContext>(options => options.UseSqlServer(connectionString));
         builder.Services.AddScoped<SeedingService>();
+        builder.Services.AddScoped<SellerService>();
+
         // Add services to the container.
         builder.Services.AddControllersWithViews();
 
