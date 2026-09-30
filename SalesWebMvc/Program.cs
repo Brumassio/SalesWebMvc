@@ -9,8 +9,10 @@ public partial class Program
         builder.Services.AddRazorPages().AddRazorRuntimeCompilation();
         var connectionString = builder.Configuration.GetConnectionString("SalesWebMvcContext") ?? throw new InvalidOperationException("Connection string 'SalesWebMvcContext' not found.");
         builder.Services.AddDbContext<SalesWebMvcContext>(options => options.UseSqlServer(connectionString));
+
         builder.Services.AddScoped<SeedingService>();
         builder.Services.AddScoped<SellerService>();
+        builder.Services.AddScoped<DepartmentService>();
 
         // Add services to the container.
         builder.Services.AddControllersWithViews();
