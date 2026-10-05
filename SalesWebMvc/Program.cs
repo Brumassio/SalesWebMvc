@@ -1,6 +1,8 @@
 using Microsoft.EntityFrameworkCore;
 using SalesWebMvc.Data;
 using SalesWebMvc.Services;
+using System.Globalization;
+using Microsoft.AspNetCore.Localization;
 public partial class Program
 {
     private static void Main(string[] args)
@@ -18,6 +20,16 @@ public partial class Program
         builder.Services.AddControllersWithViews();
 
         var app = builder.Build();
+
+        var enUS = new CultureInfo("en-US");
+        var localizationOptions = new RequestLocalizationOptions
+        {
+            DefaultRequestCulture = new RequestCulture(enUS),
+            SupportedCultures = new List<CultureInfo> { enUS },
+            SupportedUICultures = new List<CultureInfo> { enUS }
+        };
+
+        app.UseRequestLocalization(localizationOptions);
 
         using (var scope = app.Services.CreateScope())
         {
