@@ -1,7 +1,6 @@
 ﻿using SalesWebMvc.Models;
 using Microsoft.EntityFrameworkCore;
 using SalesWebMvc.Services.Exceptions;
-using Microsoft.EntityFrameworkCore;
 
 
 namespace SalesWebMvc.Services

@@ -15,6 +15,7 @@ public partial class Program
         builder.Services.AddScoped<SeedingService>();
         builder.Services.AddScoped<SellerService>();
         builder.Services.AddScoped<DepartmentService>();
+        builder.Services.AddScoped<SalesRecordService>();
 
         // Add services to the container.
         builder.Services.AddControllersWithViews();
